@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/index.css" />
+    <script type="module" src="./src/components/category-score.js"></script>
+    <script type="module" src="./src/components/results-summary.js"></script>
+
+    <title>Frontend Mentor | Results summary component</title>
+  </head>
+  <body>
+    <results-summary> </results-summary>
+
+    <script>
+      // Data loading script
+      let data = undefined;
+      const resultsSummaryElements =
+        document.getElementsByTagName("results-summary");
+
+      window.addEventListener("load", async () => {
+        data = await fetch("./data.json").then((response) => response.json());
+        for (let i = 0; i < resultsSummaryElements.length; i++) {
+          const element = resultsSummaryElements[i];
+          element.setAttribute("data", JSON.stringify(data));
+        }
+      });
+    </script>
+  </body>
+</html>
